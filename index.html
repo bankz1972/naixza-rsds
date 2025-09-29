@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link rel="shortcut icon" href="assets/img/favicon.png" type="image/png" sizes="32x32">
+  <title>Login</title>
+</head>
+<body class="bg-white md:bg-gray-100 flex flex-col min-h-screen">
+  <div class="flex-grow flex flex-col items-center justify-center w-full">
+    <!-- Main content container with responsive design -->
+    <div class="w-full max-w-md mx-auto px-6 py-8 md:bg-white md:rounded-2xl md:shadow-md md:p-8">
+      <!-- Logo -->
+      <div class="flex justify-center mb-10">
+        <img src="assets/img/logo.png" alt="logo" class="h-16">
+      </div>
+      
+      <!-- Korean Text -->
+      <div class="text-center mb-10">
+        <p class="text-gray-700 mb-1">비밀번호를 입력하거나,</p>
+        <p class="text-gray-700">신뢰하는 기기로 인증하세요.</p>
+      </div>
+      
+      <!-- Login Form -->
+      <form class="space-y-5" action="#" method="post" onsubmit="return false;">
+        <!-- Email/ID Field - Disabled/Read-only -->
+        <div class="relative mb-4">
+          <input type="text" class="w-full p-3 border border-gray-300 rounded-md bg-gray-50 cursor-not-allowed" disabled id="username">
+          <span class="absolute right-3 top-3 text-gray-500" id="username-domain"></span>
+          <input type="hidden" id="email">
+        </div>
+        
+        <!-- Password Field -->
+        <div class="relative mb-4">
+          <input type="password" id="password" placeholder="비밀번호" class="w-full p-3 border border-gray-300 rounded-md pr-10">
+          <button type="button" id="togglePassword" class="absolute right-3 top-3 text-gray-500">
+            <!-- Eye icon (password hidden) -->
+            <svg xmlns="http://www.w3.org/2000/svg" id="eye-hide" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+            </svg>
+            <!-- Eye icon (password visible) -->
+            <svg xmlns="http://www.w3.org/2000/svg" id="eye-show" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+          </button>
+        </div>
+        
+        <div class="text-red-500 flex items-center text-sm mb-5" style="display: none;" id="error-message">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+          <span>아이디 또는 비밀번호가 일치하지 않습니다.</span>
+        </div>
+        
+        <!-- Login Button -->
+        <button type="submit" class="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600 transition duration-200 mb-6">
+          로그인
+        </button>
+        
+        <!-- Additional Options -->
+        <div class="flex justify-between text-sm text-gray-500 my-5">
+          <div class="flex items-center">
+            <input type="radio" id="remember" name="login-options" class="mr-2">
+            <label for="remember" class="flex items-center cursor-pointer">
+              <span>로그인 유지</span>
+              <span class="ml-1 text-gray-400">?</span>
+            </label>
+          </div>
+          <button type="button" class="text-gray-500 hover:underline">비밀번호 찾기</button>
+        </div>
+        
+        <!-- Alternative Login Option -->
+        <div class="flex justify-between items-center text-sm text-gray-500 my-5">
+          <div class="flex items-center">
+            <input type="radio" id="device-auth" name="login-options" class="mr-2">
+            <label for="device-auth" class="flex items-center cursor-pointer">
+              <span>ID 기억하기</span>
+              <span class="ml-1 text-gray-400">?</span>
+            </label>
+          </div>
+        </div>
+      </form>
+      
+      <!-- Device Authentication Option -->
+      <div class="pt-6">
+        <button class="w-full flex py-3 border border-gray-300 rounded-md hover:bg-gray-50 transition duration-200 relative">
+          <div class="absolute left-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <span class="mx-auto">신뢰하는 기기로 인증</span>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Alternative Login Option - Outside card -->
+    <!-- <div class="my-10 text-center px-4">
+      <a href="#" class="text-blue-500 hover:underline flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+        </svg>
+        <span>다른 계정으로 로그인</span>
+      </a>
+    </div> -->
+  </div>
+  
+  <!-- Footer - Fixed at bottom -->
+  <footer class="w-full py-6 text-center text-[#71767A] text-[12px] font-[700]">
+    <p>© NAVER Cloud Corp.</p>
+  </footer>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
